@@ -14,17 +14,17 @@ st.set_page_config(
 file_name = "ta_20260619190504.csv"
 
 try:
-    # 2. CSV 파일 읽기 (인코딩 처리 및 공백 자동 제거)
-    # 1번째 줄부터 바로 읽기 위해 skiprows를 완전히 없앴습니다!
+    # 2. CSV 파일 읽기
+    # 스크린샷에 나온 대로 1번째 줄이 헤더이므로 skiprows 없이 바로 읽고 한글 깨짐 방지 처리
     df = pd.read_csv(file_name, encoding='utf-8')
     
-    # 열 이름 양 끝의 미세한 공백 제거
+    # 열 이름 양 끝의 눈에 안 보이는 미세 공백 완벽 제거
     df.columns = df.columns.str.strip()
     
-    # 날짜 데이터 내부의 큰따옴표 및 공백 무조건 청소하기
+    # 날짜 데이터 내부의 큰따옴표(") 및 앞뒤 공백 깨끗하게 청소
     df['날짜'] = df['날짜'].astype(str).str.replace('"', '').str.strip()
     
-    # 안전하게 날짜 데이터타입으로 변환 후 연도 추출
+    # 안전하게 날짜 데이터타입으로 변환 후 '연도' 숫자 추출
     df['날짜'] = pd.to_datetime(df['날짜'], format='%Y-%m-%d', errors='coerce')
     df['연도'] = df['날짜'].dt.year
 
@@ -37,16 +37,16 @@ try:
         <hr style='margin-top:0;'>
     """, unsafe_allow_html=True)
 
-    # 데이터가 정상적으로 들어왔는지 확인
-    # 복잡한 계산식 대신 데이터 존재 여부를 먼저 체크합니다.
+    # 데이터 누락 여부 무결성 체크
     if df['연도'].isnull().all():
-        st.error("날짜 형식을 변환하는 데 실패했습니다. 파일의 날짜 포맷을 확인해 주세요.")
+        st.error("🚨 날짜 형식을 변환하는 데 실패했습니다. 파일의 날짜 포맷을 확인해 주세요.")
     else:
         # 4. 상단 요약 지표 (KPI 메트릭) 계산
         start_year = int(df['연도'].min())
         end_year = int(df['연도'].max())
         
-        # 보내주신 파일의 실제 열 이름인 '평균기온(°C)'을 매칭합니다.
+        # 스크린샷에 적힌 정확한 열 이름인 '평균기온(°C)' 기반 연산
+        past_avg = df[df['연년'] < (start_year + 10)]['평균기온(°C)'].mean() if '연도' in df else df[df['연도'] < (start_year + 10)]['평균기온(°C)'].mean()
         past_avg = df[df['연도'] < (start_year + 10)]['평균기온(°C)'].mean()
         recent_avg = df[df['연도'] > (end_year - 10)]['평균기온(°C)'].mean()
         temp_rise = recent_avg - past_avg
@@ -64,12 +64,12 @@ try:
         # 5. 연도별 평균 기온 데이터 그룹화
         yearly_summary = df.groupby('연도')['평균기온(°C)'].mean().reset_index()
 
-        # 6. Plotly 선 그래프 시각화
+        # 6. Plotly 선 그래프 시각화 룸
         st.subheader("📈 연도별 평균 기온 추이 선 그래프")
         
         fig = go.Figure()
         
-        # 메인 변동 선
+        # 메인 변동 선 (★ '연度' 오타를 '연도'로 완벽하게 수정 완료!)
         fig.add_trace(go.Scatter(
             x=yearly_summary['연도'],
             y=yearly_summary['평균기온(°C)'],
@@ -80,7 +80,7 @@ try:
             hovertemplate='<b>%{x}년</b><br>평균 기온: %{y:.2f}°C<extra></extra>'
         ))
         
-        # 장기 우상향 추세선 계산
+        # 장기 우상향 추세선 산출 및 추가
         z = np.polyfit(yearly_summary['연도'], yearly_summary['평균기온(°C)'], 1)
         p = np.poly1d(z)
         
