@@ -2,7 +2,7 @@ import streamlit as st
 
 # 1. 페이지 기본 설정 및 디자인
 st.set_page_config(
-    page_title="🎨 진로 교육 MBTI 컬러 매핑 가이드",
+    page_title="🎨 MBTI 와 어울리는 퍼스널 컬러 찾기",
     page_icon="🎨",
     layout="wide"
 )
