@@ -1,4 +1,4 @@
-import streamlit as nx
+import streamlit as st
 
 # 1. 페이지 기본 설정 및 스타일
 st.set_page_config(
