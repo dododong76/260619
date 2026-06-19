@@ -24,7 +24,8 @@ def load_data(url):
     return df
 
 # 💡 주소에 브랜치(main) 경로를 명확히 포함해 주었습니다.
-csv_url = "https://raw.githubusercontent.com/dododong76/260619/ta_20260619190504.csv"
+# 기존 주소를 지우고 이 주소로 완전히 교체해 보세요.
+csv_url = "https://raw.githubusercontent.com/dododong76/260619/main/ta_20260619190504.csv"
 
 try:
     df = load_data(csv_url)
