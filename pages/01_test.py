@@ -24,7 +24,7 @@ def load_data(url):
     return df
 
 # ⚠️ [중요] 본인의 파일명에 맞게 URL 맨 뒷부분 'weather_data.csv'를 실제 파일명으로 수정해주세요!
-csv_url = "https://raw.githubusercontent.com/dododong76/260619/main/weather_data.csv"
+csv_url = "https://raw.githubusercontent.com/dododong76/260619/ta_20260619190504.csv"
 
 try:
     df = load_data(csv_url)
