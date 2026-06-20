@@ -72,9 +72,10 @@ div[data-testid="stHorizontalBlock"] > div:nth-of-type(1) .stButton button:hover
 
 /* 질문 화면의 우측 버튼 (선택지 B - 연한 노랑 블록) */
 div[data-testid="stHorizontalBlock"] > div:nth-of-type(2) .stButton button {
+    font-size: 50px !important; 
     background-color: #fefcbf !important;
     color: #b7791f !important;
-    font-size: 50px !important; /* 👈 세미콜론(;) 보정 및 24px로 수정 */
+    /* 👈 세미콜론(;) 보정 및 24px로 수정 */
 }
 div[data-testid="stHorizontalBlock"] > div:nth-of-type(2) .stButton button:hover {
     background-color: #fef08a !important;
