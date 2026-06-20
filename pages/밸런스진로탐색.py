@@ -51,7 +51,7 @@ h1, h2, h3, p {
 .stButton button {
     width: 100%;
     height: 65px;
-    font-size: 20px !important;
+    font-size: 50px !important;
     font-weight: bold !important;
     border-radius: 35px !important; /* 이미지처럼 둥글게 */
     border: none !important;
@@ -63,6 +63,7 @@ h1, h2, h3, p {
 div[data-testid="stHorizontalBlock"] > div:nth-of-type(1) .stButton button {
     background-color: #eef2ff !important;
     color: #3182ce !important;
+    font-size: 50px !important; /* 👈 50px에서 24px로 수정 */
 }
 div[data-testid="stHorizontalBlock"] > div:nth-of-type(1) .stButton button:hover {
     background-color: #ebf8ff !important;
@@ -73,6 +74,7 @@ div[data-testid="stHorizontalBlock"] > div:nth-of-type(1) .stButton button:hover
 div[data-testid="stHorizontalBlock"] > div:nth-of-type(2) .stButton button {
     background-color: #fefcbf !important;
     color: #b7791f !important;
+    font-size: 50px !important; /* 👈 세미콜론(;) 보정 및 24px로 수정 */
 }
 div[data-testid="stHorizontalBlock"] > div:nth-of-type(2) .stButton button:hover {
     background-color: #fef08a !important;

@@ -36,14 +36,14 @@ st.markdown("""
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         display: flex;
         flex-direction: column;
-        text-decoration: none !important;
         overflow: hidden;
         margin-bottom: 15px;
+        cursor: pointer; /* 마우스 커서가 손가락 모양으로 바뀌도록 변경 */
     }
     
     /* 마우스 오버 시 사진처럼 부드럽고 고급스럽게 뜨는 효과 */
     .premium-card:hover {
-        transform: translateY(-10px) scale(1.05);
+        transform: translateY(-10px) scale(1.02);
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
         border-color: #3B82F6; /* 테두리를 포인트 컬러로 변경 */
     }
@@ -106,6 +106,22 @@ st.markdown("""
         color: #1E3A8A;
         font-weight: 700;
     }
+
+    /* 이동 버튼 커스텀 스타일 스타일 */
+    .stButton > button {
+        width: 100% !important;
+        background-color: #3B82F6 !important;
+        color: white !important;
+        border-radius: 12px !important;
+        border: none !important;
+        height: 50px !important;
+        font-size: 16px !important;
+        font-weight: bold !important;
+        transition: background-color 0.2s;
+    }
+    .stButton > button:hover {
+        background-color: #1D4ED8 !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -139,48 +155,57 @@ soccer_image = get_image_base64("축구.png")
 
 # --- 좌측 카드: 진로 탐색 밸런스 게임 ---
 with col1:
+    # 카드 레이아웃 구성 (링크 태그 제거하고 div로 수정)
     st.markdown(f"""
-        <a href="pages/진로" target="_self" class="premium-card">
+        <div class="premium-card">
             <div class="card-img-wrapper">
                 <img src="{balance_image}" class="card-img" alt="밸런스 게임">
             </div>
             <div class="card-content">
                 <span class="card-badge">🎯 성향 분석 대시보드</span>
-                <h2 class="card-title">🌋 1. 진로 밸런스 게임</h2>
+                <h2 class="card-title">🌋 진로 밸런스 게임</h2>
                 <p class="card-text">
                     단 5개의 기가 막힌 밸런스 질문을 통해 당신의 비즈니스 성향을 날카롭게 분석합니다!<br><br>
                     <span class="highlight-text">CEO, 개발자, 디자이너, PM, 데이터 사이언티스트</span> 중 젠슨 황과 가장 완벽한 케미를 자랑하는 당신의 천직을 확인해 보세요.
                 </p>
             </div>
-        </a>
+        </div>
     """, unsafe_allow_html=True)
     
-
+    # 클릭 처리를 위한 확실한 Streamlit 버튼 도입
+    if st.button("🚀 진로 탐색하러 가기", key="go_balance"):
+        st.switch_page("pages/밸런스진로탐색.py") # 파일명 확장자까지 명확하게 기입
+    
 
 
 # --- 우측 카드: 미니 축구 게임 ---
 with col2:
+    # 카드 레이아웃 구성 (링크 태그 제거하고 div로 수정)
     st.markdown(f"""
-        <a href="pages/게임" target="_self" class="premium-card">
+        <div class="premium-card">
             <div class="card-img-wrapper">
                 <img src="{soccer_image}" class="card-img" alt="축구 게임">
             </div>
             <div class="card-content">
                 <span class="card-badge">⚽ 스트레스 해소 Zone</span>
-                <h2 class="card-title">⚽ 2. 미니 축구 월드컵</h2>
+                <h2 class="card-title">⚽ 미니 축구 월드컵</h2>
                 <p class="card-text">
                     머리 쓰는 진로 탐색에 지쳤다면? 짜릿한 스포츠 타임!<br><br>
                     간단하고 직관적인 컨트롤로 골문을 흔드는 <span class="highlight-text">실시간 미니 축구 게임</span>입니다. 친구와 함께 혹은 혼자서 최고 점수에 도전하고 스트레스를 날려버리세요!
                 </p>
             </div>
-        </a>
+        </div>
     """, unsafe_allow_html=True)
+    
+    # 클릭 처리를 위한 확실한 Streamlit 버튼 도입
+    if st.button("🎮 미니 축구 하러 가기", key="go_soccer"):
+        st.switch_page("pages/축구게임.py") # 파일명 확장자까지 명확하게 기입
     
 
 
 # 4. 하단 푸터 및 안내 문구
 st.markdown("<br><br><hr style='border-color: #E2E8F0;'>", unsafe_allow_html=True)
 st.markdown(
-    "<p style='text-align: center; color: #94A3B8; font-size: 13px;'>© 2026 유퀴즈 온더 테크 대시보드 프로젝트. All rights reserved.</p>", 
+    "<p style='text-align: center; color: #94A3B8; font-size: 13px;'>© 2026 파이썬 프로젝트 1조. All rights reserved.</p>", 
     unsafe_allow_html=True
 )
