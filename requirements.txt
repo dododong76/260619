@@ -6,4 +6,4 @@ numpy
 requests
 streamlit-folium
 pyproj
-cv2
+opencv-python-headless
