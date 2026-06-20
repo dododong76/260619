@@ -162,11 +162,10 @@ with col1:
                 <img src="{balance_image}" class="card-img" alt="밸런스 게임">
             </div>
             <div class="card-content">
-                <span class="card-badge">🎯 성향 분석 대시보드</span>
+                <span class="card-badge">🎯 진로 성향 분석 </span>
                 <h2 class="card-title">🌋 진로 밸런스 게임</h2>
                 <p class="card-text">
-                    단 5개의 기가 막힌 밸런스 질문을 통해 당신의 비즈니스 성향을 날카롭게 분석합니다!<br><br>
-                    <span class="highlight-text">CEO, 개발자, 디자이너, PM, 데이터 사이언티스트</span> 중 젠슨 황과 가장 완벽한 케미를 자랑하는 당신의 천직을 확인해 보세요.
+                    기가 막힌 밸런스 질문을 통해 진로를 날카롭게 분석합니다!<br><br>
                 </p>
             </div>
         </div>
@@ -191,7 +190,6 @@ with col2:
                 <h2 class="card-title">⚽ 미니 축구 월드컵</h2>
                 <p class="card-text">
                     머리 쓰는 진로 탐색에 지쳤다면? 짜릿한 스포츠 타임!<br><br>
-                    간단하고 직관적인 컨트롤로 골문을 흔드는 <span class="highlight-text">실시간 미니 축구 게임</span>입니다. 친구와 함께 혹은 혼자서 최고 점수에 도전하고 스트레스를 날려버리세요!
                 </p>
             </div>
         </div>
