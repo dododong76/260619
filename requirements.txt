@@ -8,3 +8,4 @@ streamlit-folium
 pyproj
 opencv-python-headless
 openai
+matplotlib
